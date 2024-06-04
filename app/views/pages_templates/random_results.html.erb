@@ -1,0 +1,19 @@
+<h1>Random Results</h1>
+<% min_input = params.fetch(:min) %>
+<% min_input = min_input.to_f %>
+
+<% max_input = params.fetch(:max) %>
+<% max_input = max_input.to_f %>
+
+<% results = rand(min_input..max_input) %>
+
+<dl>
+  <dt>Minimum</dt>
+  <dd><%= min_input %></dd>
+  <dt>Maximum</dt>
+  <dd><%= max_input %></dd>
+  <dt>Random Number</dt>
+  <dd><%= results %></dd>
+</dl>
+
+<a href="/random/new">Pick another random number</a>

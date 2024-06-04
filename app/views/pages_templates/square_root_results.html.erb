@@ -1,0 +1,19 @@
+<h1>Square Root Results</h1>
+
+<% input = params.fetch(:number) %>
+<% if input == "" %>
+  <% input = 0.0 %>
+<% else %>
+  <% input = input.to_f %>
+<% end %>
+
+<% results = Math.sqrt(input) %>
+
+<dl>
+  <dt>Number</dt>
+  <dd><%= input.to_i %></dd>
+  <dt>Square Root</dt>
+  <dd><%= results %></dd>
+</dl>
+
+<a href="/square_root/new">Calculate another square root</a>

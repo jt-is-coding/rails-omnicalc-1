@@ -1,0 +1,34 @@
+<h1>Payment Results</h1>
+<% input_apr = params.fetch(:rate) %>
+<% input_apr = input_apr.to_f %>
+
+<% input_years = params.fetch(:years) %>
+<% input_years = input_years.to_i %>
+
+<% input_principal = params.fetch(:principal) %>
+<% input_principal = input_principal.to_i %>
+
+<% r = (input_apr / 100) / 12 %>
+
+<% n = input_years * 12 %>
+
+<% numerator = r * input_principal %>
+
+<% denominator = (1 + r) ** (n * -1) %>
+<% denominator = 1 - denominator %>
+
+<% payment = numerator / denominator %>
+
+
+<dl>
+  <dt>APR</dt>
+  <dd><%= input_apr.to_fs(:percentage, {:precision => 4}) %></dd>
+  <dt>Number of years</dt>
+  <dd><%= input_years %></dd>
+  <dt>Principal</dt>
+  <dd><%= input_principal.to_fs(:currency) %></dd>
+  <dt>Payment</dt>
+  <dd><%= payment.to_fs(:currency) %></dd>
+</dl>
+
+<a href="/payment/new">Calculate another payment</a>
